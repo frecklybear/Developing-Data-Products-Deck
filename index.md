@@ -1,0 +1,60 @@
+---
+title       : Shiny App- WeatherMe
+subtitle    : Enjoy your sunshine with our predictions!
+author      : Sara C.
+job         : Developing Data Products
+framework   : io2012        # {io2012, html5slides, shower, dzslides, ...}
+highlighter : highlight.js  # {highlight.js, prettify, highlight}
+hitheme     : tomorrow      # 
+widgets     : []            # {mathjax, quiz, bootstrap}
+mode        : selfcontained # {standalone, draft}
+knit        : slidify::knit2slides
+
+---
+
+## Introduction to WeatherMe App
+
+What does WeatherMe do? 
+> 1. Predicts how many hours of bright sunshine you will have in Singapore
+> 2. Based on user inputs of a) max temperature, b) min temperature, c) humidity
+> 3. Valid based on historical data in Singapore (Source: data.gov.sg collected over 1975-2015)
+<br>
+<br>
+> <p><b> Just type in your weather input and get your prediction for how many hours of sunshine you can enjoy today! </b></p>
+
+--- .class #id
+
+## Why do you need WeatherMe?
+> 1. Singapore has no seasons but 2 weather states: Sunny and Rainy
+> 2. Tourists come to Singapore to enjoy sunshine
+> 3. Quick and easy way to get a prediction to plan your day's activities
+
+
+---
+## Building WeatherMe
+
+WeatherMe used a simple Generalized Linear Model "glm" to train the predictive model for no of sunshine hours.
+The model was trained using official data from data.gov.sg of weather records over the period of 1975-2015. 
+
+Sunshine hours was taken as the dependent variable that was affected by the combination of max temp, min temp and humidity.Although there can be more accurate methods, this method was chosen to give a fairly quick estimation for users. 
+
+
+```r
+# read Singapore historical weather data
+rawData <- read.table("weather.csv", header = TRUE, sep =",", stringsAsFactors = FALSE)
+
+# train simple prediction model for hours of bright sunshine
+modFit <- train(sunshine_hours ~ max_temp + min_temp + humidity, method="glm", 
+                data= rawData)
+```
+
+---
+
+## Use the WeatherMe App now!
+
+* Shiny app: https://frecklybear.shinyapps.io/Developing-Data-Products
+* Github: https://github.com/frecklybear/Developing-Data-Products
+
+Enjoy the sun!
+
+---

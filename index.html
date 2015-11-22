@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Shiny App- WeatherMe</title>
+  <meta charset="utf-8">
+  <meta name="description" content="Shiny App- WeatherMe">
+  <meta name="author" content="Sara C.">
+  <meta name="generator" content="slidify" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/default.css" media="all" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/phone.css" 
+    media="only screen and (max-device-width: 480px)" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/slidify.css" >
+  <link rel="stylesheet" href="libraries/highlighters/highlight.js/css/tomorrow.css" />
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->  <link rel=stylesheet href="./assets/css/ribbons.css"></link>
+
+  
+  <!-- Grab CDN jQuery, fall back to local if offline -->
+  <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.min.js"></script>
+  <script>window.jQuery || document.write('<script src="libraries/widgets/quiz/js/jquery.js"><\/script>')</script> 
+  <script data-main="libraries/frameworks/io2012/js/slides" 
+    src="libraries/frameworks/io2012/js/require-1.0.8.min.js">
+  </script>
+  
+  
+
+</head>
+<body style="opacity: 0">
+  <slides class="layout-widescreen">
+    
+    <!-- LOGO SLIDE -->
+        <slide class="title-slide segue nobackground">
+  <hgroup class="auto-fadein">
+    <h1>Shiny App- WeatherMe</h1>
+    <h2>Enjoy your sunshine with our predictions!</h2>
+    <p>Sara C.<br/>Developing Data Products</p>
+  </hgroup>
+  <article></article>  
+</slide>
+    
+
+    <!-- SLIDES -->
+    <slide class="" id="slide-1" style="background:;">
+  <hgroup>
+    <h2>Introduction to WeatherMe App</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>What does WeatherMe do? </p>
+
+<ol class = "build incremental">
+<li>Predicts how many hours of bright sunshine you will have in Singapore</li>
+<li>Based on user inputs of a) max temperature, b) min temperature, c) humidity</li>
+<li>Valid based on historical data in Singapore (Source: data.gov.sg collected over 1975-2015)
+<br>
+<br>
+<p><b> Just type in your weather input and get your prediction for how many hours of sunshine you can enjoy today! </b></p></li>
+</ol>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Why do you need WeatherMe?</h2>
+  </hgroup>
+  <article data-timings="">
+    <ol class = "build incremental">
+<li>Singapore has no seasons but 2 weather states: Sunny and Rainy</li>
+<li>Tourists come to Singapore to enjoy sunshine</li>
+<li>Quick and easy way to get a prediction to plan your day&#39;s activities</li>
+</ol>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-3" style="background:;">
+  <hgroup>
+    <h2>Building WeatherMe</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>WeatherMe used a simple Generalized Linear Model &quot;glm&quot; to train the predictive model for no of sunshine hours.
+The model was trained using official data from data.gov.sg of weather records over the period of 1975-2015. </p>
+
+<p>Sunshine hours was taken as the dependent variable that was affected by the combination of max temp, min temp and humidity.Although there can be more accurate methods, this method was chosen to give a fairly quick estimation for users. </p>
+
+<pre><code class="r"># read Singapore historical weather data
+rawData &lt;- read.table(&quot;weather.csv&quot;, header = TRUE, sep =&quot;,&quot;, stringsAsFactors = FALSE)
+
+# train simple prediction model for hours of bright sunshine
+modFit &lt;- train(sunshine_hours ~ max_temp + min_temp + humidity, method=&quot;glm&quot;, 
+                data= rawData)
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-4" style="background:;">
+  <hgroup>
+    <h2>Use the WeatherMe App now!</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>Shiny app: <a href="https://frecklybear.shinyapps.io/Developing-Data-Products">https://frecklybear.shinyapps.io/Developing-Data-Products</a></li>
+<li>Github: <a href="https://github.com/frecklybear/Developing-Data-Products">https://github.com/frecklybear/Developing-Data-Products</a></li>
+</ul>
+
+<p>Enjoy the sun!</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-5" style="background:;">
+  <article data-timings="">
+    
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+    <slide class="backdrop"></slide>
+  </slides>
+  <div class="pagination pagination-small" id='io2012-ptoc' style="display:none;">
+    <ul>
+      <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=1 title='Introduction to WeatherMe App'>
+         1
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=2 title='Why do you need WeatherMe?'>
+         2
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=3 title='Building WeatherMe'>
+         3
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=4 title='Use the WeatherMe App now!'>
+         4
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=5 title='NA'>
+         5
+      </a>
+    </li>
+  </ul>
+  </div>  <!--[if IE]>
+    <script 
+      src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js">  
+    </script>
+    <script>CFInstall.check({mode: 'overlay'});</script>
+  <![endif]-->
+</body>
+  <!-- Load Javascripts for Widgets -->
+  
+  <!-- LOAD HIGHLIGHTER JS FILES -->
+  <script src="libraries/highlighters/highlight.js/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  <!-- DONE LOADING HIGHLIGHTER JS FILES -->
+   
+  </html>
