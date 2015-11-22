@@ -56,5 +56,3 @@ modFit <- train(sunshine_hours ~ max_temp + min_temp + humidity, method="glm",
 * Github: https://github.com/frecklybear/Developing-Data-Products
 
 Enjoy the sun!
-
----
